@@ -1,0 +1,6 @@
+require "treedent/version"
+require "treedent/formatted_output"
+require "treedent/indented_line"
+require "treedent/node_drawing"
+require "treedent/node"
+require "treedent/tree"

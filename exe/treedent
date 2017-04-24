@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'treedent/cli'
+Treedent::CLI.start

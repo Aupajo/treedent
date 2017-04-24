@@ -1,0 +1,19 @@
+Usage:
+  treedent file [options]
+
+Options:
+  -h, --help    # Show this help message and quit
+  -v, --version # Show treedent version message and quit
+
+Example:
+
+  echo "a\\n  b\\n    c\\n  d\\n  e\\n    f" | treedent
+
+  Will return:
+
+    a
+    ├── b
+    │   └── c
+    ├── d
+    └── e
+        └── f
