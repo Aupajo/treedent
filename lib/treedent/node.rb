@@ -32,18 +32,18 @@ module Treedent
     end
 
     def ancestors(&block)
-      return enum_for(:ancestors) unless block_given?
       traverse_relationship(:parent, &block)
     end
 
     def successors(&block)
-      return enum_for(:successors) unless block_given?
       traverse_relationship(:successor, &block)
     end
 
     private
 
     def traverse_relationship(relation, &block)
+      return enum_for(:traverse_relationship, relation) unless block_given?
+      
       node = self
       yield node while node = node.public_send(relation)
     end
