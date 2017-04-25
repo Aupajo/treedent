@@ -1,5 +1,10 @@
 # Treedent
 
+[![Gem Version](https://badge.fury.io/rb/treedent.svg)](https://badge.fury.io/rb/treedent)
+[![Build Status](https://travis-ci.org/Aupajo/treedent.svg?branch=master)](https://travis-ci.org/Aupajo/treedent)
+[![Code Climate](https://codeclimate.com/github/Aupajo/treedent.png)](https://codeclimate.com/github/Aupajo/treedent)
+
+
 A command-line tool for generating `tree`-like formatted output from indented plain text.
 
 ## Installation
