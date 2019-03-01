@@ -1,11 +1,18 @@
 require_relative 'test_helper'
 
 describe Treedent::FormattedOutput do
+  def strip_heredoc(string)
+    to_strip = string.scan(/^[ \t]*(?=\S)/).min
+    indent = (to_strip && to_strip.size) || 0
+    string.gsub(/^[ \t]{#{indent}}/, '')
+  end
+
   after do
     actual = Treedent::FormattedOutput.new(@input).to_s
+    stripped = strip_heredoc(@output)
 
-    if actual != @output
-      fail Minitest::Assertion, "Expected:\n#@output\nGot:\n#{actual}"
+    if actual != stripped
+      fail Minitest::Assertion, "Expected:\n#{stripped}\nGot:\n#{actual}"
     end
   end
 
@@ -19,7 +26,7 @@ describe Treedent::FormattedOutput do
         b
     INPUT
 
-    @output = <<~OUTPUT
+    @output = <<-OUTPUT
       a
       └── b
     OUTPUT
@@ -32,7 +39,7 @@ describe Treedent::FormattedOutput do
         f
     INPUT
 
-    @output = <<~OUTPUT
+    @output = <<-OUTPUT
       d
       ├── e
       └── f
@@ -46,7 +53,7 @@ describe Treedent::FormattedOutput do
           i
     INPUT
 
-    @output = <<~OUTPUT
+    @output = <<-OUTPUT
       g
       └── h
           └── i
@@ -71,7 +78,7 @@ describe Treedent::FormattedOutput do
             w
     INPUT
 
-    @output = <<~OUTPUT
+    @output = <<-OUTPUT
       j
       ├── k
       │   ├── l
@@ -87,6 +94,6 @@ describe Treedent::FormattedOutput do
           └── v
               └── w
     OUTPUT
-  end
 
+  end
 end

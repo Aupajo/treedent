@@ -2,13 +2,14 @@ require 'strscan'
 
 module Treedent
   class IndentedLine < Struct.new(:indentation, :content)
-    WHITESPACE_PATTERN = /[ \t]*/
+    WHITESPACE_PATTERN = /[ \t]*/.freeze
 
     def self.from(line_string)
       scanner = StringScanner.new(line_string)
-      indentation = scanner.scan(WHITESPACE_PATTERN)&.length || 0
+      scan = scanner.scan(WHITESPACE_PATTERN)
+      indentation = (scan && scan.length) || 0
       content = scanner.rest
-      self.new(indentation, content)
+      new(indentation, content)
     end
   end
 end
